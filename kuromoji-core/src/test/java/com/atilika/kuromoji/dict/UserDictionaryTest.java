@@ -21,7 +21,7 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
+
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -112,7 +112,7 @@ public class UserDictionaryTest {
     public void testUserDictionaryEntries() throws IOException {
         String userDictionaryEntry = "クロ,クロ,クロ,カスタム名詞";
         UserDictionary dictionary = new UserDictionary(
-            new ByteArrayInputStream(userDictionaryEntry.getBytes(StandardCharsets.UTF_8)),
+            new ByteArrayInputStream(userDictionaryEntry.getBytes("UTF-8")),
             9, 7, 0
         );
         List<UserDictionary.UserDictionaryMatch> matches = dictionary.findUserDictionaryMatches("この丘はアクロポリスと呼ばれている");
@@ -126,7 +126,7 @@ public class UserDictionaryTest {
             "クロ,クロ,クロ,カスタム名詞\n" +
             "アクロ,アクロ,アクロ,カスタム名詞";
         UserDictionary dictionary = new UserDictionary(
-            new ByteArrayInputStream(userDictionaryEntries.getBytes(StandardCharsets.UTF_8)),
+            new ByteArrayInputStream(userDictionaryEntries.getBytes("UTF-8")),
             9, 7, 0
         );
         List<UserDictionary.UserDictionaryMatch> positions = dictionary.findUserDictionaryMatches("この丘はアクロポリスと呼ばれている");

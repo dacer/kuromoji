@@ -23,7 +23,7 @@ import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -282,7 +282,7 @@ public class TokenizerTest {
         Tokenizer tokenizer = new Tokenizer.Builder()
             .userDictionary(
                 new ByteArrayInputStream(
-                    userDictionary.getBytes(StandardCharsets.UTF_8)
+                    userDictionary.getBytes("UTF-8")
                 )
             )
             .build();

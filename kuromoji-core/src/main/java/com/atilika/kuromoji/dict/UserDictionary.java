@@ -24,7 +24,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -165,7 +165,7 @@ public class UserDictionary implements Dictionary {
 
     private void read(InputStream input) throws IOException {
         BufferedReader reader = new BufferedReader(
-            new InputStreamReader(input, StandardCharsets.UTF_8)
+            new InputStreamReader(input, "UTF-8")
         );
         String line;
 

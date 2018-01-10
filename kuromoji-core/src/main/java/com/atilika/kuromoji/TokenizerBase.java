@@ -39,7 +39,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.charset.StandardCharsets;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
@@ -253,7 +253,7 @@ public abstract class TokenizerBase {
         List<ViterbiNode> bestPath = viterbiSearcher.search(lattice);
 
         outputStream.write(
-            viterbiFormatter.format(lattice, bestPath).getBytes(StandardCharsets.UTF_8)
+            viterbiFormatter.format(lattice, bestPath).getBytes("UTF-8")
         );
         outputStream.flush();
     }
@@ -273,7 +273,7 @@ public abstract class TokenizerBase {
         ViterbiLattice lattice = viterbiBuilder.build(text);
 
         outputStream.write(
-            viterbiFormatter.format(lattice).getBytes(StandardCharsets.UTF_8)
+            viterbiFormatter.format(lattice).getBytes("UTF-8")
         );
         outputStream.flush();
     }

@@ -28,7 +28,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.ShortBuffer;
-import java.nio.charset.StandardCharsets;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -59,7 +59,7 @@ public class ConnectionCostsCompilerTest {
 
         compiler.readCosts(
             new ByteArrayInputStream(
-                costs.getBytes(StandardCharsets.UTF_8)
+                costs.getBytes("UTF-8")
             )
         );
 

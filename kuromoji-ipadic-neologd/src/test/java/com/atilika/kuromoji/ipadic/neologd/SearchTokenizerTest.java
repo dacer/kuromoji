@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.LineNumberReader;
-import java.nio.charset.StandardCharsets;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -50,7 +50,7 @@ public class SearchTokenizerTest {
 
     public void assertSegmentation(String testFilename) throws IOException {
         LineNumberReader reader = new LineNumberReader(
-            new InputStreamReader(getResourceAsStream(testFilename), StandardCharsets.UTF_8)
+            new InputStreamReader(getResourceAsStream(testFilename), "UTF-8")
         );
 
         String line;

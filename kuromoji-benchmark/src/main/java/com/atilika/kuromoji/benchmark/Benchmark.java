@@ -35,7 +35,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
-import java.nio.charset.StandardCharsets;
+
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.zip.GZIPInputStream;
@@ -87,13 +87,13 @@ public class Benchmark {
                     new GZIPInputStream(
                         new FileInputStream(inputFile)
                     ),
-                    StandardCharsets.UTF_8
+                    "UTF-8"
                 )
             );
         } else {
             reader = new BufferedReader(
                 new InputStreamReader(
-                    new FileInputStream(inputFile), StandardCharsets.UTF_8
+                    new FileInputStream(inputFile), "UTF-8"
                 )
             );
         }
@@ -104,7 +104,7 @@ public class Benchmark {
             writer = new NullWriter();
         } else {
             writer = new BufferedWriter(
-                new OutputStreamWriter(new FileOutputStream(outputFile), StandardCharsets.UTF_8)
+                new OutputStreamWriter(new FileOutputStream(outputFile), "UTF-8")
             );
         }
 

@@ -22,7 +22,8 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+
+import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -259,8 +260,13 @@ public class UserDictionaryTokenizerTest {
     }
 
     private ByteArrayInputStream makeUserDictionaryStream(String userDictionary) {
-        return new ByteArrayInputStream(
-            userDictionary.getBytes(StandardCharsets.UTF_8)
-        );
+        try {
+            return new ByteArrayInputStream(
+                userDictionary.getBytes("UTF-8")
+            );
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return new ByteArrayInputStream(new byte[0]);
+        }
     }
 }

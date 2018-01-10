@@ -20,7 +20,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -46,7 +46,7 @@ public class TestUtils {
 
     public static void assertCanTokenizeStream(InputStream untokenizedInput, TokenizerBase tokenizer) throws IOException {
         BufferedReader untokenizedInputReader = new BufferedReader(
-            new InputStreamReader(untokenizedInput, StandardCharsets.UTF_8)
+            new InputStreamReader(untokenizedInput, "UTF-8")
         );
 
         String untokenizedLine;
@@ -82,10 +82,10 @@ public class TestUtils {
                                                    InputStream untokenizedInput,
                                                    TokenizerBase tokenizer) throws IOException {
         BufferedReader untokenizedInputReader = new BufferedReader(
-            new InputStreamReader(untokenizedInput, StandardCharsets.UTF_8)
+            new InputStreamReader(untokenizedInput, "UTF-8")
         );
         BufferedReader tokenizedInputReader = new BufferedReader(
-            new InputStreamReader(tokenizedInput, StandardCharsets.UTF_8)
+            new InputStreamReader(tokenizedInput, "UTF-8")
         );
 
         String untokenizedLine;

@@ -19,12 +19,9 @@ package com.atilika.kuromoji.buffer;
 import com.atilika.kuromoji.io.ByteBufferIO;
 import com.atilika.kuromoji.util.ScriptUtils;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
+
 import java.util.TreeMap;
 
 public class StringValueMapBuffer {
@@ -79,7 +76,12 @@ public class StringValueMapBuffer {
     }
 
     private String getString(final int valueIndex, final int length) {
-        return new String(buffer.array(), valueIndex, length, StandardCharsets.UTF_16);
+        try {
+            return new String(buffer.array(), valueIndex, length, "UTF-16");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return "";
+        }
     }
 
     public void write(OutputStream output) throws IOException {
@@ -160,6 +162,11 @@ public class StringValueMapBuffer {
     }
 
     private byte[] getBytes(String string) {
-        return string.getBytes(StandardCharsets.UTF_16);
+        try {
+            return string.getBytes("UTF-16");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return new byte[0];
+        }
     }
 }
